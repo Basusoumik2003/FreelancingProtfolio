@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
 export default function HeroSection() {
   const containerVariants = {
@@ -47,20 +47,60 @@ export default function HeroSection() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <motion.button
+            <motion.a
+              href="#projects"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-black text-white rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
             >
               View Projects <ArrowRight className="w-5 h-5" />
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
+              href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Contact Me
-            </motion.button>
+            </motion.a>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-16 flex justify-center gap-6"
+          >
+            <motion.a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-3 rounded-full border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 transition-all"
+              aria-label="GitHub"
+            >
+              <Github className="w-5 h-5" />
+            </motion.a>
+            <motion.a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-3 rounded-full border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 transition-all"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </motion.a>
+            <motion.a
+              href="mailto:your.email@example.com"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-3 rounded-full border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 transition-all"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5" />
+            </motion.a>
           </motion.div>
 
           <motion.div
