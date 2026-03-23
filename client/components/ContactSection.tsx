@@ -53,7 +53,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 px-6 bg-gradient-to-b from-white to-gray-50"
+      className="py-24 px-6 bg-gradient-to-b from-blue-900 to-blue-950"
     >
       <div className="max-w-2xl mx-auto">
         <motion.div
@@ -64,16 +64,16 @@ export default function ContactSection() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center"
+            className="text-4xl md:text-5xl font-bold text-white mb-4 text-center"
           >
-            Get In Touch
+            Let's build something amazing
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 mb-12 text-center"
+            className="text-lg text-blue-100 mb-12 text-center"
           >
-            Let's build something amazing together. Drop me a message and I'll
-            get back to you as soon as possible.
+            Have a project in mind? Let's discuss how we can turn your vision
+            into a production-ready reality.
           </motion.p>
 
           <motion.form
@@ -81,48 +81,50 @@ export default function ContactSection() {
             onSubmit={handleSubmit}
             className="space-y-6"
           >
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-semibold text-gray-700 mb-2"
-              >
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors"
-                placeholder="John Doe"
-              />
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-semibold text-blue-200 mb-3 uppercase tracking-wider"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors"
+                  placeholder="John Doe"
+                />
+              </div>
 
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold text-gray-700 mb-2"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors"
-                placeholder="john@example.com"
-              />
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-semibold text-blue-200 mb-3 uppercase tracking-wider"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors"
+                  placeholder="john@example.com"
+                />
+              </div>
             </div>
 
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-semibold text-gray-700 mb-2"
+                className="block text-xs font-semibold text-blue-200 mb-3 uppercase tracking-wider"
               >
                 Message
               </label>
@@ -132,8 +134,8 @@ export default function ContactSection() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={6}
-                className="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors resize-none"
+                rows={5}
+                className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors resize-none"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -142,9 +144,9 @@ export default function ContactSection() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full px-6 py-4 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+              className="w-full px-6 py-4 bg-white text-blue-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
             >
-              {submitted ? "Message Sent! 🎉" : "Let's Build Something Amazing"}
+              {submitted ? "Message Sent! 🎉" : "Send Message"}
             </motion.button>
           </motion.form>
 
@@ -152,7 +154,7 @@ export default function ContactSection() {
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-6 text-center text-green-600 font-medium"
+              className="mt-6 text-center text-blue-100 font-medium"
             >
               Thank you! I'll be in touch soon.
             </motion.p>
