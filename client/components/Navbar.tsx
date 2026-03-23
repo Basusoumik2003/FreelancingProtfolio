@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Code2 } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,10 +15,9 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" },
+    { label: "Expertise", href: "#skills" },
+    { label: "About", href: "#about" },
   ];
 
   return (
@@ -30,17 +30,21 @@ export default function Navbar() {
           : "bg-white"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <motion.div
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <motion.a
+          href="/"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-xl font-bold text-gray-900"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          Soumik
-        </motion.div>
+          <div className="w-6 h-6 bg-blue-900 rounded flex items-center justify-center">
+            <Code2 className="w-4 h-4 text-white" />
+          </div>
+          <span className="text-lg font-bold text-gray-900">Soumik</span>
+        </motion.a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navItems.map((item, idx) => (
             <motion.a
               key={item.href}
@@ -55,14 +59,15 @@ export default function Navbar() {
           ))}
         </div>
 
-        <motion.button
+        <motion.a
+          href="#contact"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="hidden md:block px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium text-sm"
+          className="hidden md:block px-5 py-2 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors font-medium text-sm"
         >
-          Let's Talk
-        </motion.button>
+          Contact Me
+        </motion.a>
       </div>
     </motion.nav>
   );
