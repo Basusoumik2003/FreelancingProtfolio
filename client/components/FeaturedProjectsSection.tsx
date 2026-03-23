@@ -10,6 +10,7 @@ export default function FeaturedProjectsSection() {
       problem: "Businesses struggle to manage carbon credits efficiently",
       solution: "Build a scalable web platform for seamless tracking and trading",
       tech: ["React", "Node.js", "MongoDB"],
+      image: "https://cdn.builder.io/api/v1/image/assets%2Fcd1e489694834ee49721ae7a1be24c08%2F094c3271e1a04dbb970e05c4a6ceedb7?format=webp&width=800&height=600",
       liveDemo: "#",
       github: "#",
     },
@@ -19,6 +20,7 @@ export default function FeaturedProjectsSection() {
       problem: "Optimized user flow and marketplace logic for high-volume transactions",
       solution: "",
       tech: ["Next.js", "PostgreSQL", "FastAPI"],
+      image: "https://cdn.builder.io/api/v1/image/assets%2Fcd1e489694834ee49721ae7a1be24c08%2F4df4fe20ad1c4930be7bbe7d712be3b5?format=webp&width=800&height=600",
       caseStudy: "#",
     },
     {
