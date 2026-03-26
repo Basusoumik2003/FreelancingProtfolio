@@ -1,34 +1,71 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { ContactFormPayload, ContactResponse } from "@shared/api";
+
+const initialFormState: ContactFormPayload = {
+  name: "",
+  email: "",
+  message: "",
+};
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
+  const [formData, setFormData] = useState<ContactFormPayload>(initialFormState);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const payload: ContactFormPayload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result: ContactResponse = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message);
+      }
+
+      setFormData(initialFormState);
+      setSubmitted(true);
+
+      window.setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -95,8 +132,11 @@ export default function ContactSection() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  disabled={isSubmitting}
+                  minLength={2}
+                  maxLength={80}
                   required
-                  className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors"
+                  className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors disabled:opacity-70"
                   placeholder="John Doe"
                 />
               </div>
@@ -114,8 +154,10 @@ export default function ContactSection() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  disabled={isSubmitting}
+                  maxLength={120}
                   required
-                  className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors"
+                  className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors disabled:opacity-70"
                   placeholder="john@example.com"
                 />
               </div>
@@ -133,22 +175,40 @@ export default function ContactSection() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                disabled={isSubmitting}
+                minLength={5}
+                maxLength={5000}
                 required
                 rows={5}
-                className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors resize-none"
+                className="w-full px-4 py-3 bg-blue-800 bg-opacity-50 border border-blue-700 rounded-lg text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-colors resize-none disabled:opacity-70"
                 placeholder="Tell me about your project..."
               />
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={isSubmitting ? undefined : { scale: 1.02 }}
+              whileTap={isSubmitting ? undefined : { scale: 0.98 }}
               type="submit"
-              className="w-full px-6 py-4 bg-white text-blue-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
+              disabled={isSubmitting}
+              className="w-full px-6 py-4 bg-white text-blue-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider disabled:cursor-not-allowed disabled:bg-blue-100"
             >
-              {submitted ? "Message Sent! 🎉" : "Send Message"}
+              {isSubmitting
+                ? "Sending..."
+                : submitted
+                  ? "Message Sent!"
+                  : "Send Message"}
             </motion.button>
           </motion.form>
+
+          {errorMessage && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-6 text-center text-red-200 font-medium"
+            >
+              {errorMessage}
+            </motion.p>
+          )}
 
           {submitted && (
             <motion.p

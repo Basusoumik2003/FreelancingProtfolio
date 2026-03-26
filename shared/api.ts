@@ -10,3 +10,14 @@
 export interface DemoResponse {
   message: string;
 }
+
+export interface ContactFormPayload {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface ContactResponse {
+  success: boolean;
+  message: string;
+}

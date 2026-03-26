@@ -71,7 +71,7 @@ export default function HeroSection() {
             className="mt-16 flex justify-center gap-6"
           >
             <motion.a
-              href="https://github.com"
+              href="https://github.com/Basusoumik2003/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}
@@ -82,7 +82,7 @@ export default function HeroSection() {
               <Github className="w-5 h-5" />
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/basusoumik/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}
@@ -93,7 +93,7 @@ export default function HeroSection() {
               <Linkedin className="w-5 h-5" />
             </motion.a>
             <motion.a
-              href="mailto:your.email@example.com"
+              href="mailto:soumikbasu2003@gmail.com"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="p-3 rounded-full border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 transition-all"

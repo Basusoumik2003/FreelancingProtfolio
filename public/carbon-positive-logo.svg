@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
+  <rect width="1200" height="1200" fill="#ffffff"/>
+  <defs>
+    <linearGradient id="g1" x1="125" y1="470" x2="1100" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E7A45"/>
+      <stop offset="1" stop-color="#46C05B"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="210" y1="540" x2="545" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#121212"/>
+      <stop offset="1" stop-color="#464646"/>
+    </linearGradient>
+  </defs>
+  <path d="M545 340c-138 0-250 112-250 250s112 250 250 250c105 0 196-65 233-157" stroke="url(#g1)" stroke-width="70" stroke-linecap="round"/>
+  <path d="M655 520c28-131 140-228 273-228 154 0 278 124 278 278s-124 278-278 278c-111 0-206-65-250-159" stroke="url(#g1)" stroke-width="70" stroke-linecap="round"/>
+  <circle cx="928" cy="590" r="215" fill="#5A7F28"/>
+  <path d="M869 740c-6-78-48-132-132-154 22 86 71 137 132 154Z" fill="#fff"/>
+  <path d="M986 740c-4-80 42-136 116-160-14 92-61 148-116 160Z" fill="#fff"/>
+  <path d="M931 774c13-51 13-91 0-139" stroke="#fff" stroke-width="20" stroke-linecap="round"/>
+  <path d="M180 540c0-106 85-191 191-191 61 0 118 29 153 79l-101 63c-13-20-38-32-62-32-42 0-76 34-76 76 0 41 34 75 76 75 24 0 49-12 62-32l101 63c-35 50-92 79-153 79-106 0-191-85-191-191Z" fill="url(#g2)"/>
+  <path d="M716 480h86c26 0 47 21 47 47v10c0 26-21 47-47 47h-86v-104Z" fill="url(#g1)"/>
+  <text x="110" y="980" fill="#4B4B4B" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="800" letter-spacing="2">CARBON</text>
+  <text x="640" y="980" fill="#4A7A22" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="800" letter-spacing="2">POSITIVE</text>
+</svg>

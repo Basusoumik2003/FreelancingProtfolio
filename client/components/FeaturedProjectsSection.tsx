@@ -10,8 +10,8 @@ export default function FeaturedProjectsSection() {
       problem: "Businesses struggle to manage carbon credits efficiently",
       solution: "Build a scalable web platform for seamless tracking and trading",
       tech: ["React", "Node.js", "MongoDB"],
-      image: "https://cdn.builder.io/api/v1/image/assets%2Fcd1e489694834ee49721ae7a1be24c08%2F094c3271e1a04dbb970e05c4a6ceedb7?format=webp&width=800&height=600",
-      liveDemo: "#",
+      image: "/carbon-positive-logo.svg",
+      liveDemo: "https://www.gocarbonpositive.com/",
       github: "#",
     },
     {
@@ -79,7 +79,7 @@ export default function FeaturedProjectsSection() {
             </div>
             <motion.a
               variants={itemVariants}
-              href="https://github.com"
+              href="https://github.com/Basusoumik2003/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-700 font-semibold text-sm whitespace-nowrap hover:text-gray-900 transition-colors mt-2"

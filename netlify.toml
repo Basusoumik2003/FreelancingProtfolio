@@ -5,7 +5,7 @@ publish = "dist/spa"
 
 
 [functions]
-external_node_modules = ["express"]
+external_node_modules = ["express", "mongodb", "resend"]
 node_bundler = "esbuild"
 [[redirects]]
 force = true

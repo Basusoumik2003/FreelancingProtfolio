@@ -38,11 +38,13 @@ export default function ProjectCard({
     >
       {/* Image Placeholder */}
       {image ? (
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-40 object-cover bg-gray-200"
-        />
+        <div className="w-full h-40 bg-white p-3">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-contain"
+          />
+        </div>
       ) : (
         <div className="w-full h-40 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
           <div className="text-gray-500 text-sm font-medium">Project Image</div>
